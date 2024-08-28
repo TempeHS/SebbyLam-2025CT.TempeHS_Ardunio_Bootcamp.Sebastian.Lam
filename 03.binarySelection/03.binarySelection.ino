@@ -38,28 +38,30 @@ static unsigned int lineSensorPin = 7;
 bool readPin;
 
 void setup()
-  {
-pinMode(ledPin, OUTPUT);
-pinMode(buttonPin, INPUT);
-pinMode(lineSensorPin, INPUT);
-Serial.begin(9600);
-Serial.begin("Debugged");
-  }
+{
+  pinMode(ledPin, OUTPUT);
+  pinMode(buttonPin, INPUT);
+  pinMode(lineSensorPin, INPUT);
+  Serial.begin(9600);
+  Serial.begin("Debugged");
+}
 
 void loop() 
 {
-if (digitalRead(buttonPin) == HIGH)
+  Serial.println(analogRead(A3));
+  if (analogRead(A3) == 0)
   {
-    
-if (digitalRead(lineSensorPin) == LOW)
+    digitalWrite(ledPin, HIGH);
+  }else if (analogRead(A3) >=1)
+  {
+    digitalWrite(ledPin, LOW);
   }
-  digitalWrite(ledPin, HIGH);
-
-    {
-  }
-else
+  else if (analogRead(A3) >=10)
 {
-digitalWrite(ledPin, LOW);
+  digitalWrite(ledPin, HIGH);
+}else
+{
+  digitalWrite(ledPin, LOW);
 }
 }
 
