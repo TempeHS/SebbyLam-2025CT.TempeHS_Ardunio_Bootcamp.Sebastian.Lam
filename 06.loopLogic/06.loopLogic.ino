@@ -34,12 +34,21 @@
   Schematic: 
     
 */
+static unsigned int LEDpin = 3;
 
-void setup() {
-  
+
+void setup() 
+{
+pinMode(LEDpin, OUTPUT);
 }
 
-void loop() {
-      
-}
+void loop() 
+{
+for (int i = -255; i < 256; i++)
+{
+unsigned val = i;
+  analogWrite(LEDpin,i);
+  delay(10);
 
+}
+}
