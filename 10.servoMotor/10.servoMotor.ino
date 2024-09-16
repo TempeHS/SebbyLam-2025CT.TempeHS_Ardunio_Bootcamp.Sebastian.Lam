@@ -37,4 +37,5 @@ int val = analogRead(potpin);
 val = map(val, 1023, 0, 0, 180);
 myservo.write(val);
 
+
 }

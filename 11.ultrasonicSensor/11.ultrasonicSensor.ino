@@ -24,12 +24,29 @@
 */
 
 #include "Ultrasonic.h"
+#include <Servo.h>
 
-void setup()
-{
-  
+Servo myservo;
+Ultrasonic dingleberry(5);
+
+#define servoPin 7
+unsigned static int potpin = A2;
+
+void setup() {
+  myservo.attach(servoPin);
+
+  Serial.begin(9600);
 }
-void loop()
-{
-  
+
+void loop() {
+
+Serial.println(dingleberry.distanceRead());
+int val = analogRead(potpin);
+val = map(val, 1023, 0, 0, 180);
+myservo.write(val);
+
+if(dingleberry.distanceRead() <=10){
+  my
+}
+
 }
