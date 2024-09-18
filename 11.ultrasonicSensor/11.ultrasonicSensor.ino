@@ -30,7 +30,7 @@ Servo myservo;
 Ultrasonic dingleberry(5);
 
 #define servoPin 7
-unsigned static int potpin = A2;
+//unsigned static int potpin = A2;
 
 void setup() {
   myservo.attach(servoPin);
@@ -41,12 +41,10 @@ void setup() {
 void loop() {
 
 Serial.println(dingleberry.distanceRead());
-int val = analogRead(potpin);
-val = map(val, 1023, 0, 0, 180);
-myservo.write(val);
 
-if(dingleberry.distanceRead() <=10){
-  my
+if(dingleberry.distanceRead() >=20){
+myservo.write(0);
 }
-
+if(dingleberry.distanceRead() <20)
+myservo.write(180);
 }
